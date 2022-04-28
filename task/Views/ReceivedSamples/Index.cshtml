@@ -1,0 +1,66 @@
+﻿@model IEnumerable<task.Models.ReceivedSamples>
+@{
+    ViewBag.Title = "Index";
+}
+<div class=" container pt-5">
+    <div class="row">
+        <div class="col-1">
+            <span class="text-info">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+                </svg>
+            </span>
+        </div>
+        <div class="col-9">
+            <h3> recived samples </h3>
+        </div>
+        <div class="col-2">
+           @Html.ActionLink("create new","create", "ReceivedSamplesControlle", new {@class= "btn btn-info btn-lg " })
+        </div>
+
+    </div>
+</div>
+<table class="table table-active table-hover mt-xxl-5 " >
+    <thead>
+        <tr>
+            <th>sample Name</th>
+            <th>Client Name</th>
+            <th>Reciving side</th>
+            <th> reciving date</th>
+            <th>client Attatcments</th>
+            <th> discription</th>
+            <th> Samples count</th>
+            <th>Sample Status</th>
+            <th>edit</th>
+            <th>delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.name</td>
+                <td>@item.client.name</td>
+                <td>@item.side.name</td>
+                <td>@item.recevingDate</td>
+                <td>@item.clienAttachments</td>
+                <td>@item.describtion</td>
+                <td>@item.numberOfSamples</td>
+                <td>@item.status</td>
+                <td >
+                   
+                        @Html.ActionLink("edit", "edit", "ReceivedSamples", new { Id = @item.id }, new { @class = "btn btn-secondary btn-sm " })
+
+                   
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "delete", "ReceivedSamples", new { Id = @item.id }, new { @class = "btn btn-danger btn-sm ",
+                   onclick = "return confirm('Are sure wants to delete?');"
+               })
+
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>

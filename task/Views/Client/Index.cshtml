@@ -1,0 +1,25 @@
+﻿@model  IEnumerable<task.Models.Client>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table class="table table-hover table-active" >
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>remove</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.name</td>
+            <td>@Html.ActionLink("Delete","Client","Delete",item.id)</td>
+    </tr>
+    }
+
+</table>
+

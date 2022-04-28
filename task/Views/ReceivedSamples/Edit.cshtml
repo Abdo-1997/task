@@ -1,0 +1,143 @@
+﻿
+@model task.Models.ReceivedSamples
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="row mt-5">
+    <div class="col-1">
+        <span class="text-info">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+            </svg>
+        </span>
+    </div>
+    <div class="col">
+        <h3> recieved sample</h3>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("edit", "ReceivedSamples", "post"))
+{
+    <div class="mb-3">
+        <div class="row">
+            <div class="col-2">@Html.LabelFor(m => m.name, new { @class = "form-label" })</div>
+            <div class="col-3"> @Html.TextBoxFor(m => m.name, "", new { @class = "form-text form-control" })</div>
+            <div class="col-3">@Html.ValidationMessageFor(m => m.name, "", new { @class = "text-danger" })</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="row">
+            <div class="col-2">@Html.LabelFor(a => a.clientId, new { @class = "form-label" })</div>
+            <div class="col-3"> @Html.DropDownListFor(m => m.clientId, (SelectList)ViewBag.x, new { @class = "form-select" })</div>
+            <div class="col-3"> @Html.ActionLink("create new client ", "create", "client", "", new { @class = "btn btn-info btn-lg " })</div>
+            <div>@Html.ValidationMessageFor(m => m.clientId, "", new { @class = "text-danger" })</div>
+        </div>
+
+
+
+    </div>
+
+    <div class="mb-3 form-group">
+
+        <div class="row">
+            <div class="col-2">  @Html.LabelFor(m => m.receivingSideId, new { @class = "form-label" })</div>
+            <div class="col-3">  @Html.DropDownListFor(m => m.receivingSideId, (SelectList)ViewBag.y, new { @class = "form-select" })</div>
+            <div class="col-3">@Html.ValidationMessageFor(m => m.receivingSideId, "", new { @class = "text-danger" })</div>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <div class="row">
+            <div class="col-2">@Html.LabelFor(a => a.recevingDate, new { @class = "form-label" })</div>
+            <div class="col-3"><input type="date" name="@Model.recevingDate" class="form-control" /></div>
+            <div class="col-3">@Html.ValidationMessageFor(a => a.recevingDate, "", new { @class = "text-danger" })</div>
+        </div>
+
+
+
+    </div>
+    <div class="mb-3">
+        <div class="row">
+            <div class="col-2">
+                @Html.LabelFor(a => a.numberOfSamples, new { @class = "form-label" })
+            </div>
+            <div class="col-3"> @Html.EditorFor(a => a.numberOfSamples, "", new { @class = "form-control form-range" })</div>
+            <div class="col-3">  @Html.ValidationMessageFor(a => a.numberOfSamples, "", new { @class = "text-danger" })</div>
+        </div>
+
+
+
+    </div>
+    <div class="mb-3">
+        <div class="row">
+            <div class="col-2"> @Html.LabelFor(a => a.attachments, new { @class = "form-label" })</div>
+            <div class="col-3"> @Html.TextBoxFor(a => a.attachments, new { @class = "form-text form-control" })</div>
+            <div class="col-3">@Html.ValidationMessageFor(a => a.attachments, "", new { @class = "text-danger" })</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="row">
+            <div class="col-2">@Html.LabelFor(a => a.clienAttachments, new { @class = "form-label" })</div>
+            <div class="col-3"> @Html.TextBoxFor(a => a.clienAttachments, new { @class = "form-text form-control " })</div>
+            <div class="col-3"> @Html.ValidationMessageFor(a => a.clienAttachments, "", new { @class = "text-danger" })</div>
+        </div>
+    </div>
+
+
+    <div class="mb-3">
+        <div class="row">
+            <div class=" col-2">
+                @Html.LabelFor(a => a.describtion, new { @class = "form-label" })
+
+            </div>
+            <div class="col-3">
+                @Html.TextBoxFor(a => a.describtion, new { @class = "form-text form-control" })
+
+            </div>
+            <div class="col-3">
+                @Html.ValidationMessageFor(a => a.describtion, "", new { @class = "text-danger " })
+
+            </div>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <div class="row">
+            <div class="col-2">
+                @Html.LabelFor(a => a.sampleCost, new { @class = "form-label" })
+
+            </div>
+            <div class="col-3">
+                @Html.EditorFor(a => a.sampleCost, "", new { @class = "form-range form-control " })
+
+            </div>
+            <div class="col-3">
+
+                @Html.LabelFor(a => a.status, new { @class = "form-label" })
+                @Html.CheckBoxFor(a => a.status, new { @class = "form-check-input" })
+            </div>
+            @Html.ValidationMessageFor(a => a.sampleCost, "", new { @class = "text-danger" })
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <input type="submit" value="save" class="btn btn-success btn-lg" />
+
+            @Html.ActionLink("Back", "Index", "ReceivedSamples", new { @class = "btn btn-info btn-lg" })
+
+        </div>
+    </div>
+
+    @Html.AntiForgeryToken()
+}
+
+
+@section scripts {
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

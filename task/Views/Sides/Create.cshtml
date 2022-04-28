@@ -1,0 +1,26 @@
+﻿@model task.ViewModels.AddSidesViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Sides</h2>
+
+@using (Html.BeginForm("Create", "ClientController", FormMethod.Post))
+
+{
+<div class="row">
+    <div class="col-2">
+        @Html.LabelFor(a => a.SideName, new { @class = "form-lable" });;
+
+    </div>
+    <div class="col-3">
+        @Html.TextBoxFor(a => a.SideName, new { @class = "form-text form-control" });
+
+    </div>
+    @Html.ValidationMessageFor(a => a.SideName, "", new { @class = "text-danger" })
+
+</div>
+
+
+
+}

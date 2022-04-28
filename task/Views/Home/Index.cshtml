@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class=" container mt-xxl-5">
+    <div class="row  mt-xxl-5">
+        @Html.ActionLink("create new client ", "create", "client", "", new { @class = "btn btn-info btn-lg " })
+    </div>
+    <div class="row  mt-xxl-5">
+
+        @Html.ActionLink("samples ", "Index", "ReceivedSamples", new { @class = "btn btn-info btn-lg" })
+        <a href="~/ReceivedSamples/Index" class="btn btn-info btn-lg">samples</a>
+    </div>
+    <div class="row  mt-xxl-5">
+        @Html.ActionLink("mange Sides ", "create", "sides", "", new { @class = "btn btn-info btn-lg " })
+    </div>
+</div>

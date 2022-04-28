@@ -1,0 +1,34 @@
+﻿@model task.ViewModels.AddCustomerViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create customer</h2>
+
+
+@using (Html.BeginForm("Create", "Client", FormMethod.Post))
+
+{
+    <div class="mb-3">
+        
+        <div class="row">
+            <div class="col-3">
+                @Html.LabelFor(a => a.CustomerName, new { @class = "form-lable " })
+            </div>
+            <div class="col-3">
+                @Html.TextBoxFor(a => a.CustomerName, "", new { @class = "form-text form-control" })
+            </div>
+            <div class="col-3">
+                <input type="submit" class="btn  btn-info btn-lg" />
+            </div>
+            @Html.ValidationMessageFor(a => a.CustomerName, "", new { @class = "text-danger" })
+        </div>
+        @Html.AntiForgeryToken()
+    </div>
+}
+@section scripts {
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
